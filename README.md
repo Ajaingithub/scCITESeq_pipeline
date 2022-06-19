@@ -1,7 +1,7 @@
 # scCITESeq
  
 The functions can be used to perform the downstream analysis of the scCITESeq data.
-1. **scCITESeq_QC function ** - This function will perform the quality check scRNA and scADT dataset before and after fitering the cells based on the cell number, number of genes, mitochondir percent, and ADT UMI. 
+1. **scCITESeq_QC function** - This function will perform the quality check scRNA and scADT dataset before and after fitering the cells based on the cell number, number of genes, mitochondir percent, and ADT UMI. 
 2. **scCITEseq_Doublet_Finder** - This function will remove the doublets from the object.
 3. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2. 
 4. **scCITESeq_RNA_intergation** - The RNA / ADT object integration function.
