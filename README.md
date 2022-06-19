@@ -7,4 +7,4 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 4. **scCITESeq_RNA_intergation** - The RNA / ADT object integration function.
 5. **scCITESeq_ADT_merging** - Performing the ADT merging.
 6. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
-7. **scCITEseq_modality_integration** - Finally modality integration.
+7. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
