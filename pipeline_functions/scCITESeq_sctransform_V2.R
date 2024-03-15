@@ -1,3 +1,17 @@
+#### Args
+# Obj = RNA object created after the removing the doublets
+# saveDir = Directory to save the output files
+# ngenes = Total number of genes to be considered as variable genes and also the integration of different batches
+# regress = To regressed out the genes like cell cycle genes not to be considered for UMAP
+# Assay = "RNA"
+# process = Process for integration and normalization
+# objname = While saving to identify which sample or object is saved
+# split_by = In meta data of seurat object which column need to be consider for integration
+# reference = Which samples from the split_by need to be considered as reference onto which all other batches which be integrated
+# dims = Number of PCA dims for making the UMAP
+# sample_tree = Order for the integration
+# k_weight = number of cells to be used for integration
+
 # k_weight on reintegration if the number of cell in the following is low than we have to adjust the k_weight so that based on the those cell the nearest neighbour will be considered
 sctransform_V2_integration <- function(obj,saveDir,ngenes=4000,regress,Assay,process,objname, 
                                        split_by="orig.ident", reference = NULL, dims=30, sample_tree=NULL, k_weight=100){
