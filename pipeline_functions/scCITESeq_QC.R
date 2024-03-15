@@ -1,3 +1,8 @@
+### Arguments 
+# Dir: Directory for the CellRanger output
+# Sample: SampleName which has been put during the cellranger command
+# saveDir: The directory where all the files will be saved
+# min_cells, min_genes, max_genes, mitocpercent, ADT_UMI are the quality control for the single cell CITEseq experiment
 scCITE_QC <- function(Dir,Sample,saveDir, min_cells=3, min_genes=200, max_genes=4000, mitopercent=10, ADT_UMI=20000){
   message(paste("\n######################################## Processsing",Sample,"#####################################################\n"))
   counts <- Read10X(paste(Dir,Sample,"/count/sample_feature_bc_matrix/",sep = ""))
@@ -6,6 +11,7 @@ scCITE_QC <- function(Dir,Sample,saveDir, min_cells=3, min_genes=200, max_genes=
   HTO <- counts$`Multiplexing Capture`
   control_index <- grep("control",rownames(ADT),ignore.case = T) ## Not considering the control antibody as a variable feature
   ADT<- ADT[-control_index,]
+  dir.create(saveDir,showWarnings = FALSE)
   
   # Creating the seurat Object
   message(paste("\ncreating GEX Seurat Object\n"))
