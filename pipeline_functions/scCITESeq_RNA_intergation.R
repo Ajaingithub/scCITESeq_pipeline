@@ -8,7 +8,7 @@
 # ncol: splitted UMAP to be divided into number of cols
 # ndims: For Elbow plots number of dims
 RNA_integration <- function(obj,saveDir,dims=20,RNA_features = c("CD4","CD8A"), 
-                            Assay="RNA", process="integration", objname, numfeatures=NULL, ncol=2, ndims = 50){
+                            Assay="RNA", process="integration", objname, ncol=2, ndims = 50){
   message("\n loading the RNA/ADT integrated Object \n")
   RNA_integrated <- obj
   RNA_integrated <- RunUMAP(RNA_integrated, dims = 1:dims, reduction = "pca")
