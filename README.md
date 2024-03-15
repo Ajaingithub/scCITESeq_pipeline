@@ -118,11 +118,22 @@ These 7 step will perform the batch as well as modality (RNA and protein) integr
 
 ### Downstream Analysis
 
-source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/scRNASeq/pipeline_functions/COVID_pseudobulk_PCA_within_AJ_2.R")
-CD8_subset_dds <- COVID_pseudobulk_within_cluster_AJ(obj = CD8_mem, savedir = savedir, group1 = group1, group2 = group2,
-                                                     grouping_by = "Age", cluster = "all", cell_freq = 20, remove_samples = remove_samples,
-                                                     cluster_group = "seurat_clusters", sample_col = "orig.ident", batch_col = "Run",
-                                                     gene_min_counts =  5, column_name_split = c("sampleid","virus","age","age_number","gender","Run"))
+           source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/scRNASeq/pipeline_functions/COVID_pseudobulk_PCA_within_AJ_2.R")
+           
+           CD8_subset_dds <- COVID_pseudobulk_within_cluster_AJ(obj = CD8_mem, 
+                                                               savedir = savedir, 
+                                                               group1 = group1, 
+                                                               group2 = group2,
+                                                               grouping_by = "Age", 
+                                                               cluster = "all", 
+                                                               cell_freq = 20, 
+                                                               remove_samples = remove_samples,
+                                                               cluster_group = "seurat_clusters",
+                                                               sample_col = "orig.ident", 
+                                                               batch_col = "Run",
+                                                               gene_min_counts =  5, 
+                                                               column_name_split = c("sampleid","virus","age","age_number","gender","Run"))
+                                                               
 
 
 
