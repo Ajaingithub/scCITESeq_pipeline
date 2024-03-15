@@ -4,11 +4,11 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 1. **scCITESeq_QC function** - This function will perform the quality check scRNA and scADT dataset before and after fitering the cells based on the cell number, number of genes, mitochondir percent, and ADT UMI.
 
    #### To Run the Code
-   source("./pipeline_functions/CR7_scCITESeq_QC.R")
+       source("./pipeline_functions/CR7_scCITESeq_QC.R")
 
-   CR_outdir ="./post_processing/genotype_demux/Exp01_geno/outs/per_sample_outs/Exp01_geno/"
-   
-   scCITE_QC(samplepath = CR_outdir,
+       CR_outdir ="./post_processing/genotype_demux/Exp01_geno/outs/per_sample_outs/Exp01_geno
+
+       scCITE_QC(samplepath = CR_outdir,
              samplename = "BB22003",
              saveDir = "./output/",
              min_cells = 3,
@@ -22,9 +22,9 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 3. **scCITEseq_Doublet_Finder** - This function will remove the doublets from the object.
 
    #### To Run the Code
-   source("./pipeline_functions/scCITEseq_Doublet_Finder.R")
+          source("./pipeline_functions/scCITEseq_Doublet_Finder.R")
 
-   doublet_scCITEseq(Obj= RNA_obj,
+          doublet_scCITEseq(Obj= RNA_obj,
                      dims = 30,
                      res = 0.8,
                      saveDir = "./output/",
@@ -38,9 +38,9 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 5. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2.
 
    #### To Run the Code
-   source("./pipeline_functions/scCITESeq_sctransform_V2.R")
+          source("./pipeline_functions/scCITESeq_sctransform_V2.R")
 
-   sctransform_V2_integration(obj = RNA_obj,
+          sctransform_V2_integration(obj = RNA_obj,
                               saveDir = "./output/" ,
                               ngenes=4000,
                               regress = "mito_score",
