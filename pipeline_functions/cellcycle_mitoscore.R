@@ -1,3 +1,11 @@
+# This function performs the cell cycle and mitochondria score within the object
+# obj: Seurat object
+# saveDir: saving directory
+# ngenes: number of variable genes to use
+# process: used to save the files like "score_calculation"
+# Assay: Assay to use
+# samplename: name of the sample
+
 cellcycle_mito <- function(obj, saveDir,ngenes = 4000, process, Assay, samplename){
   dir.create(paste(saveDir,"QC_Vln/",sep = ""), showWarnings = FALSE)
   pdf(paste(saveDir,"QC_Vln/",samplename,".pdf",sep = ""),width = 12, height = 9)
