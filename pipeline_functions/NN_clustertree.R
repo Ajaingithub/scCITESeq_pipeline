@@ -1,6 +1,14 @@
-nearest_neigbour <- function(Obj_path,Dims,saveDir, Assay = "RNA", samplename, process){
+## This function help you perform the nearest neighbor and identify which resolution is best for clustering using cluster tree
+# Obj: Seurat object
+# Dims: Number of PCA dims to use
+# saveDir: saving directory
+# Assay: Seurat Assay
+# samplename: Name of the sample
+# process: "NN or clustertree"
+
+nearest_neigbour <- function(Obj,Dims,saveDir, Assay = "RNA", samplename, process){
   message(paste("\n\n######################################## Processsing",samplename,"#####################################################\n\n"))
-  GEX_obj_3 <- Obj_path
+  GEX_obj_3 <- Obj
   DefaultAssay(GEX_obj_3) <- Assay
   GEX_obj_3 <- FindNeighbors(GEX_obj_3, dims = 1:Dims)
   
