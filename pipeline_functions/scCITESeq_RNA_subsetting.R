@@ -1,8 +1,19 @@
-# ADT_main is an object from where we will subset the RNA and ADT object
-RNA_subsetting <- function(RNA_obj_path, ADT_obj_path, ADT_main, subset_cluster=NULL, cellnames=NULL, ngenes=4000, saveDir, objname, Assay, process){
+# This function is used to perform the RNA and ADT object subsetting for the good quality of cells as well as if you need to subset the CD4 cells or any particular cluster and performing the downstream analysis like normalization, dimensionality reduction etc.
+# RNA_obj: RNA_obj
+# ADT_obj: ADT_obj
+# ADT_main: ADT_obj
+# subset_cluster: Cluster that need to be subsets
+# cellnames: vector of the cellnames to be subset
+# ngenes: number of variable genes to be considered
+# saveDir: saving the directory
+# objname: name of the sample
+# Assay: which seurat assay to use
+# process: to save to file which process name to use like "subsetting"
+
+RNA_subsetting <- function(RNA_obj, ADT_obj, ADT_main, subset_cluster=NULL, cellnames=NULL, ngenes=4000, saveDir, objname, Assay, process){
   message("\n loading both the objects \n")
-  RNA_integrated_impute <- RNA_obj_path
-  ADT_integrated_impute <- ADT_obj_path
+  RNA_integrated_impute <- RNA_obj
+  ADT_integrated_impute <- ADT_obj
   
   message("\n subsetting for the ADT ",objname," cells \n")
   DefaultAssay(ADT_integrated_impute) <- "ADT"
