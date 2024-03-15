@@ -1,4 +1,18 @@
-# reference set you have to provide the index number that is present in ypour list
+## Args
+# ADT_obj = ADT_obj
+# saveDir = save directory
+# dims = PCA dims for ADT
+# numfeatures = number of variable features 
+# Assay = "ADT"
+# process = "Integration"
+# objname = name of the sample
+# split_by = column which to be used for integration like batch
+# reference = Which samples from the split_by need to be considered as reference onto which all other batches which be integrated
+# dims = Number of PCA dims for making the UMAP
+# sample_tree = Order for the integration
+# k_weight = number of cells to be used for integration
+
+# reference set you have to provide the index number that is present in your list
 # reference_dataset <- which(names(pbmc.list) == "10x Chromium (v3)")
 # sample_tree is a matrix that decide how to integrate the samples
 # 1st we integrate the sample for each run then we integrate the both the batches for which we make the matrix
