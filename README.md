@@ -35,7 +35,7 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 
    This will filter out doublets from both the RNA and ADT
    
-5. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2.
+5. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2 and integreate using CCA.
 
    #### To Run the Code
           source("./pipeline_functions/scCITESeq_sctransform_V2.R")
