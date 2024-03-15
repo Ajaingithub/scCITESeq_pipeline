@@ -1,7 +1,16 @@
+### Args
+# Obj = The RNA object created after QC using scCITE_QC.R function
+# dims = PCA dims to include for UMAP
+# res = Resolution to be used for Louvian clustering 
+# Obj2 = The ADT object created after QC using scCITE_QC.R function
+# samplename = The name of the sample for saving the file
+# process = To save the output we will use this name to identify at which process this file is created
+# Assay = Which assay to be considered for doublet filtering
 doublet_scCITEseq <- function(Obj,dims,res,saveDir,Obj2,samplename,process,Assay){
   message(paste("\n\n######################################## Processsing",samplename,"#####################################################\n\n"))
   GEX_obj_3 <- Obj
   DefaultAssay(GEX_obj_3) <- Assay
+  dir.create(saveDir,showWarnings = FALSE)
   
   message("\nFinding Cluster and Running UMAP\n")
   GEX_obj_3 <- FindClusters(GEX_obj_3, resolution = res, verbose = FALSE)
