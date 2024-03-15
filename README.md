@@ -1,6 +1,7 @@
 # scCITESeq
  
-The functions can be used to perform the downstream analysis of the scCITESeq data.
+The functions can be used to perform the downstream analysis of the scCITESeq data. I have used all these function in **pipeline_functions/scCITESeq_Execution.R** 
+
 1. **scCITESeq_QC function** - This function will perform the quality check scRNA and scADT dataset before and after fitering the cells based on the cell number, number of genes, mitochondir percent, and ADT UMI.
 
    #### To Run the Code
