@@ -20,8 +20,11 @@ Modal_Cluster_and_UMAP_QC <- function(modal_integrate_obj, saveDir , res, RNA_fe
   message("Running Clustering on RNA and ADT integration\nloading the object")
 
   modal_integrated <- modal_integrate_obj
-  modal_integrated <- FindClusters(modal_integrated, resolution = res,
-                                   graph.name = "wsnn", algorithm = 3, verbose = FALSE)
+  modal_integrated <- FindClusters(modal_integrated, 
+                                   resolution = res,
+                                   graph.name = "wsnn", 
+                                   algorithm = 3, 
+                                   verbose = FALSE)
 
   
   source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/scRNASeq/pipeline_functions/Heatmap.R")
