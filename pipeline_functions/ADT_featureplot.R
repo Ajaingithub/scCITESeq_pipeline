@@ -1,11 +1,20 @@
-### For the Featureplot of the unimputed protein put it in the assay2. 
+# This function will create the featureplots for all the protein in the seurat object both imputed and  non-imputed datasets
+# Args:
+# obj: seurat_obj
+# savedir: save directory
+# objname: name of the sample
+# process: "featureplots"
+# reduction: dimensionality reduction like pca, umap, wnn.umap
+# x = PC1, TSNE1, UMAP_1"
+# y = PC2, TSNE2, UMAP_2
 
-ADT_featureplot <- function(obj = obj, savedir = savedir, objname, process, 
+ADT_featureplot <- function(obj, savedir, objname, process, 
                             reduction = "umap",x="UMAP_1", y="UMAP_2"){
   source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/single_cell/express_cell_front.R")
   DefaultAssay(obj) <- "MAGIC_ADT"
   p1  <- featureplot_front(obj, "CD4-protein")
   p2 <- featureplot_front(obj, "CD8a-protein")
+  
   pdf(paste(savedir,"featureplot/",objname,"_MAGIC_ADT_",process,"_CD4_CD8a_front.pdf", sep = ""), width = 10, height = 6)
   print(p1|p2)
   dev.off()
