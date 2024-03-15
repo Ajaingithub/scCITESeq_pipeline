@@ -362,8 +362,36 @@ ADT_features = c("CD4-protein","CD8a-protein")
 objname = "CD4"
 Assay = "integrated"
 process = "modality_cluster_and_QC"
-Modal_Cluster_and_UMAP_QC(modal_integrate_obj_path = obj_path, saveDir = savedir, res = 0.4, RNA_features = RNA_features, 
+Modal_Cluster_and_UMAP_QC(modal_integrate_obj = obj_path, saveDir = savedir, res = 0.4, RNA_features = RNA_features, 
                           ADT_features = ADT_features,Assay = Assay, process = process, objname=objname)
+
+### Performing Pseudobulk Differential
+group1 = "O"
+group2 = "Y"
+remove_samples = NULL
+remove_samples_name <- paste(remove_samples,collapse="_and_")
+DefaultAssay(CD8_mem) <- "RNA"
+CD8_mem
+# savedir = "/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/scCITESeq/Ines/Run01_to_10_analysis/vaccine/S_vs_Z/"
+source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/scRNASeq/pipeline_functions/COVID_pseudobulk_PCA_within_AJ_2.R")
+CD8_subset_dds <- COVID_pseudobulk_within_cluster_AJ(obj = CD8_mem, savedir = savedir, group1 = group1, group2 = group2,
+                                                     grouping_by = "Age", cluster = "all", cell_freq = 20, remove_samples = remove_samples,
+                                                     cluster_group = "seurat_clusters", sample_col = "orig.ident", batch_col = "Run",
+                                                     gene_min_counts =  5, column_name_split = c("sampleid","virus","age","age_number","gender","Run"))
+
+cluster2 <- paste(cluster, sep="_", collapse="_")
+savedir2 <- paste(savedir,"pseudobulk/clus_",cluster2,"_",group1,"_vs_",group2,"/",sep = "")
+# savedir <- "/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Hirohisa/scCITESeq/SARS_CoV_2/Run04/Analysis/pseudobulk/clus_13_removed__DMSO_vs_Sprotein/"
+source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/RNAseq/pipeline_function/RNAseq_limma_EdgeR.R")
+design0 <- model.matrix(~ 0 + Age + Run, data = colData(CD8_subset_dds))
+colnames(design0) <- c("O","Y",paste("Run",1:(ncol(design0)-2),sep = ""))
+cm <- makeContrasts(O_VS_Y = O-Y,levels = design0)
+desl_clus <- LimmaEdgeR_differential(dds = CD8_subset_dds,
+                                     design0 = design0,
+                                     cm = cm, 
+                                     savedir = savedir2,
+                                     logfc = 0.5,
+                                     p_value_adj = 0.05)
 
 
 ###### CD8A ########
