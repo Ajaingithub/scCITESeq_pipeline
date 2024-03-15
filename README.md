@@ -99,4 +99,20 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                               col_sel = c("Age","Run","orig.ident","gender"))
     
     
-13. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
+7. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
+   #### To Run the Code
+              source("pipeline_functions/scCITEseq_modality_integration.R")
+
+              modality_integration(RNA_obj = RNA_obj,
+                                   ADT_obj = ADT_obj,
+                                   RNA_dims = 30,
+                                   ADT_dims = 10,
+                                   saveDir = savedir,
+                                   Assay = "integrated",
+                                   process = "RNA_ADT",
+                                   objname= "BB22003")
+
+
+
+These 7 step will perform the batch as well as modality (RNA and protein) integration for the scCITESeq experiment
+
