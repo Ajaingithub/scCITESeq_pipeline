@@ -19,7 +19,7 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 
    This will create the filtered RNA and ADT (protein) object
    
-3. **scCITEseq_Doublet_Finder** - This function will remove the doublets from the object.
+2. **scCITEseq_Doublet_Finder** - This function will remove the doublets from the object.
 
    #### To Run the Code
           source("./pipeline_functions/scCITEseq_Doublet_Finder.R")
@@ -35,7 +35,7 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 
    This will filter out doublets from both the RNA and ADT
    
-4. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2 and integreate using CCA.
+3. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2 and integreate using CCA.
 
    #### To Run the Code
           source("./pipeline_functions/scCITESeq_sctransform_V2.R")
@@ -53,13 +53,13 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                                      sample_tree=NULL,
                                      k_weight=100)
 
-5. **scCITESeq_RNA_intergation** - The RNA / ADT object integration function.
+4. **scCITESeq_RNA_intergation** - The RNA / ADT object integration function.
 
    ##### To Run the Code
          source("pipeline_functions/scCITESeq_RNA_intergation.R")
 
          RNA_integration(obj = RNA_obj/ADT_obj,
-                         saveDir = "./object/",
+                         saveDir = "./output/",
                          dims=30,
                          RNA_features = c("CD4","CD8A"), 
                          Assay="RNA",
@@ -68,6 +68,21 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                          ncol=2,
                          ndims = 50)
    
-9. **scCITESeq_ADT_merging** - Performing the ADT merging.
-10. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
-11. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
+5. **scCITESeq_ADT_merging** - Performing the ADT (protein) merging.
+   #### To Run the Code
+             source("pipeline_functions/scCITESeq_ADT_merging.R")
+   
+             ADT_merging(ADT_obj = ADT_obj,
+                         saveDir= "./output/",
+                         dims=10,
+                         numfeatures=NULL,
+                         Assay="ADT",
+                         process="ADT_integration",
+                         objname="BB22003",
+                         split_by="orig.ident", 
+                         reference=NULL,
+                         sample_tree = NULL,
+                         k_weight=100)
+   
+11. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
+12. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
