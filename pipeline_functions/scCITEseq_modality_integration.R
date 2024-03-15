@@ -1,7 +1,18 @@
-modality_integration <- function(RNA_obj_path, ADT_obj_path, RNA_dims, ADT_dims, saveDir, Assay, process, objname){
+### Args
+# RNA_obj: Seurat RNA object
+# ADT_obj: Seurat ADT object
+# RNA_dims: Total number of PCA dimensions for RNA
+# ADT_dims: Total number of PCA dimensions for ADT
+# saveDir: save directory
+# Assay: "integrated"
+# Process: process name RNA and ADT integration
+# objname: Name of the sample
+
+
+modality_integration <- function(RNA_obj, ADT_obj, RNA_dims, ADT_dims, saveDir, Assay, process, objname){
   message("\n Reading ADT and RNA object \n")
-  RNA_integration <- RNA_obj_path
-  ADT_integration <- ADT_obj_path
+  RNA_integration <- RNA_obj
+  ADT_integration <- ADT_obj
   
   ### adding ADT counts and Feature to the integrated object
   condition = all(rownames(RNA_integration@meta.data)==rownames(ADT_integration@meta.data))
