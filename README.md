@@ -35,7 +35,7 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 
    This will filter out doublets from both the RNA and ADT
    
-5. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2 and integreate using CCA.
+4. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2 and integreate using CCA.
 
    #### To Run the Code
           source("./pipeline_functions/scCITESeq_sctransform_V2.R")
@@ -53,7 +53,21 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                               sample_tree=NULL,
                               k_weight=100)
 
-7. **scCITESeq_RNA_intergation** - The RNA / ADT object integration function.
-8. **scCITESeq_ADT_merging** - Performing the ADT merging.
-9. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
-10. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
+5. **scCITESeq_RNA_intergation** - The RNA / ADT object integration function.
+
+   ##### To Run the Code
+         source("pipeline_functions/scCITESeq_RNA_intergation.R")
+
+         RNA_integration(obj = RNA_obj/ADT_obj,
+                                     saveDir = "./object/",
+                                     dims=30,
+                                     RNA_features = c("CD4","CD8A"), 
+                                     Assay="RNA",
+                                     process="integration",
+                                     objname = "BB22003",
+                                     ncol=2,
+                                     ndims = 50)
+   
+9. **scCITESeq_ADT_merging** - Performing the ADT merging.
+10. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
+11. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
