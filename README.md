@@ -7,7 +7,7 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
    #### To Run the Code
        source("./pipeline_functions/CR7_scCITESeq_QC.R")
 
-       CR_outdir ="./post_processing/genotype_demux/Exp01_geno/outs/per_sample_outs/Exp01_geno
+       CR_outdir ="./post_processing/genotype_demux/Exp01_geno/outs/per_sample_outs/Exp01_geno"
 
        scCITE_QC(samplepath = CR_outdir,
                  samplename = "BB22003",
