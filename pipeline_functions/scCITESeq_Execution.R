@@ -1,4 +1,4 @@
-#### This script is scCITEseq Ines Run01 Demultiplexing using Cell Ranger regressing unwanted Effect and integrating Modalities and samples keeping Feature 4000 #
+#### This script is scCITEseq using Cell Ranger regressing unwanted Effect and integrating batches and Modalities keeping nFeature 4000 #
 
 #### Before Command ########
 # https://satijalab.org/seurat/articles/visualization_vignette.html
