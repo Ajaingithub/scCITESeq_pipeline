@@ -1,9 +1,16 @@
-###### Integration ########
-# ncol for the splitted you map to be divided into number of cols
-RNA_integration <- function(obj_path,saveDir,dims=20,RNA_features = c("CD4","CD8A"), 
+###### UMAP object 
+# obj_path: "RNA"
+# saveDir: Saved directory path
+# dims: PCA dimension to be used
+# RNA_features: Genes featureplot
+# Assay: RNA or ADT used
+# objname: Name of the object
+# ncol: splitted UMAP to be divided into number of cols
+# ndims: For Elbow plots number of dims
+RNA_integration <- function(obj,saveDir,dims=20,RNA_features = c("CD4","CD8A"), 
                             Assay="RNA", process="integration", objname, numfeatures=NULL, ncol=2, ndims = 50){
   message("\n loading the RNA/ADT integrated Object \n")
-  RNA_integrated <- obj_path
+  RNA_integrated <- obj
   RNA_integrated <- RunUMAP(RNA_integrated, dims = 1:dims, reduction = "pca")
   
   message("\n Saving the UMAP \n")
