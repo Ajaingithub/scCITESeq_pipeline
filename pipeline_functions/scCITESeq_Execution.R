@@ -373,7 +373,7 @@ remove_samples_name <- paste(remove_samples,collapse="_and_")
 DefaultAssay(CD8_mem) <- "RNA"
 CD8_mem
 # savedir = "/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/scCITESeq/Ines/Run01_to_10_analysis/vaccine/S_vs_Z/"
-source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/scRNASeq/pipeline_functions/COVID_pseudobulk_PCA_within_AJ_2.R")
+source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/scRNASeq/pipeline_functions/pseudobulk_PCA.R")
 CD8_subset_dds <- COVID_pseudobulk_within_cluster_AJ(obj = CD8_mem, savedir = savedir, group1 = group1, group2 = group2,
                                                      grouping_by = "Age", cluster = "all", cell_freq = 20, remove_samples = remove_samples,
                                                      cluster_group = "seurat_clusters", sample_col = "orig.ident", batch_col = "Run",
@@ -382,7 +382,7 @@ CD8_subset_dds <- COVID_pseudobulk_within_cluster_AJ(obj = CD8_mem, savedir = sa
 cluster2 <- paste(cluster, sep="_", collapse="_")
 savedir2 <- paste(savedir,"pseudobulk/clus_",cluster2,"_",group1,"_vs_",group2,"/",sep = "")
 # savedir <- "/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Hirohisa/scCITESeq/SARS_CoV_2/Run04/Analysis/pseudobulk/clus_13_removed__DMSO_vs_Sprotein/"
-source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/RNAseq/pipeline_function/RNAseq_limma_EdgeR.R")
+source("/research/labs/immunology/goronzy_weyand/GoronzyLab_Mayo/Abhinav/Resources/RNAseq/pipeline_function/pseudobulk_differential.R")
 design0 <- model.matrix(~ 0 + Age + Run, data = colData(CD8_subset_dds))
 colnames(design0) <- c("O","Y",paste("Run",1:(ncol(design0)-2),sep = ""))
 cm <- makeContrasts(O_VS_Y = O-Y,levels = design0)
