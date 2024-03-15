@@ -35,7 +35,7 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 
    This will filter out doublets from both the RNA and ADT
    
-3. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2 and integreate using CCA.
+3. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2 and samples integreated using CCA.
 
    #### To Run the Code
           source("./pipeline_functions/scCITESeq_sctransform_V2.R")
@@ -68,7 +68,7 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                          ncol=2,
                          ndims = 50)
    
-5. **scCITESeq_ADT_merging** - Performing the ADT (protein) merging.
+5. **scCITESeq_ADT_merging** - Performing the ADT (protein) Sample Integration using CCA.
    #### To Run the Code
              source("pipeline_functions/scCITESeq_ADT_merging.R")
    
@@ -84,5 +84,19 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                          sample_tree = NULL,
                          k_weight=100)
    
-11. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
-12. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
+6. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
+   #### To Run the Code
+          source("pipeline_functions/cluster_UMAP_QC.R")
+
+          cluster_UMAP_and_QC(obj_path=RNA_obj/ADT_obj,
+                              dims = 30,
+                              res = 0.8,
+                              saveDir = "./output/",
+                              Assay = "RNA",
+                              QC_features = c("nCount_RNA","nFeature_RNA"),
+                              objname = "BB22003",
+                              process = "UMAP_QC",
+                              col_sel = c("Age","Run","orig.ident","gender"))
+    
+    
+13. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
