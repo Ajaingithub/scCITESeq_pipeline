@@ -141,6 +141,7 @@ These 7 step will perform the batch as well as modality (RNA and protein) integr
          design0 <- model.matrix(~ 0 + Age + Run, data = colData(CD8_subset_dds))
          colnames(design0) <- c("O","Y",paste("Run",1:(ncol(design0)-2),sep = ""))
          cm <- makeContrasts(O_VS_Y = O-Y,levels = design0)
+         
          desl_clus <- LimmaEdgeR_differential(dds = CD8_subset_dds,
                                               design0 = design0,
                                               cm = cm, 
