@@ -9,13 +9,13 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
        CR_outdir ="./post_processing/genotype_demux/Exp01_geno/outs/per_sample_outs/Exp01_geno
 
        scCITE_QC(samplepath = CR_outdir,
-             samplename = "BB22003",
-             saveDir = "./output/",
-             min_cells = 3,
-             min_genes = 200,
-             max_genes = 5000,
-             mitopercent = 10,
-             ADT_UMI = 100000)
+                 samplename = "BB22003",
+                 saveDir = "./output/",
+                 min_cells = 3,
+                 min_genes = 200,
+                 max_genes = 5000,
+                 mitopercent = 10,
+                 ADT_UMI = 100000)
 
    This will create the filtered RNA and ADT (protein) object
    
@@ -25,13 +25,13 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
           source("./pipeline_functions/scCITEseq_Doublet_Finder.R")
 
           doublet_scCITEseq(Obj= RNA_obj,
-                     dims = 30,
-                     res = 0.8,
-                     saveDir = "./output/",
-                     Obj2 = ADT_obj,
-                     samplename = "BB22003",
-                     process = "Doublet_finder",
-                     Assay = "RNA")
+                            dims = 30,
+                            res = 0.8,
+                            saveDir = "./output/",
+                            Obj2 = ADT_obj,
+                            samplename = "BB22003",
+                            process = "Doublet_finder",
+                            Assay = "RNA")
 
    This will filter out doublets from both the RNA and ADT
    
@@ -41,17 +41,17 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
           source("./pipeline_functions/scCITESeq_sctransform_V2.R")
 
           sctransform_V2_integration(obj = RNA_obj,
-                              saveDir = "./output/" ,
-                              ngenes=4000,
-                              regress = "mito_score",
-                              Assay = "RNA",
-                              process ="norm",
-                              objname = "BB22003",
-                              split_by="orig.ident",
-                              reference = NULL,
-                              dims=30,
-                              sample_tree=NULL,
-                              k_weight=100)
+                                     saveDir = "./output/" ,
+                                     ngenes=4000,
+                                     regress = "mito_score",
+                                     Assay = "RNA",
+                                     process ="norm",
+                                     objname = "BB22003",
+                                     split_by="orig.ident",
+                                     reference = NULL,
+                                     dims=30,
+                                     sample_tree=NULL,
+                                     k_weight=100)
 
 5. **scCITESeq_RNA_intergation** - The RNA / ADT object integration function.
 
@@ -59,14 +59,14 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
          source("pipeline_functions/scCITESeq_RNA_intergation.R")
 
          RNA_integration(obj = RNA_obj/ADT_obj,
-                                     saveDir = "./object/",
-                                     dims=30,
-                                     RNA_features = c("CD4","CD8A"), 
-                                     Assay="RNA",
-                                     process="integration",
-                                     objname = "BB22003",
-                                     ncol=2,
-                                     ndims = 50)
+                         saveDir = "./object/",
+                         dims=30,
+                         RNA_features = c("CD4","CD8A"), 
+                         Assay="RNA",
+                         process="integration",
+                         objname = "BB22003",
+                         ncol=2,
+                         ndims = 50)
    
 9. **scCITESeq_ADT_merging** - Performing the ADT merging.
 10. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
