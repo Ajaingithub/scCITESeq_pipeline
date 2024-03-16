@@ -118,6 +118,8 @@ These 7 step will perform the batch as well as modality (RNA and protein) integr
 
 ### Downstream Analysis
 
+**Pseudobulk PCA and Differential**:
+
            source("pipeline_functions/Psuedobulk_PCA.R")
            
            CD8_subset_dds <- COVID_pseudobulk_within_cluster_AJ(obj = CD8_mem, 
