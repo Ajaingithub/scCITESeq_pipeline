@@ -160,7 +160,10 @@ These 7 step will perform the batch as well as modality (RNA and protein) integr
                                               savedir = savedir2,
                                               logfc = 0.5,
                                               p_value_adj = 0.05)
-![Screenshot 2024-04-01 at 5 28 24 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/63d31ae7-606f-421a-b8b9-dda2a7c8a7fc)
+
+![Screenshot 2024-04-01 at 5 31 25 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/591be590-97f7-42a7-969e-d971ef2061f5)
+
+![Screenshot 2024-04-01 at 5 32 06 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/220691b9-d267-4b84-be68-10bcd8a69cdb)
 
                                                                
 
