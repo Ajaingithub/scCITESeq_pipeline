@@ -19,6 +19,9 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                  ADT_UMI = 100000)
 
    This will create the filtered RNA and ADT (protein) object
+
+![Screenshot 2024-04-01 at 5 20 15 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/354b791f-64ea-4927-8d76-843fd646f628)
+
    
 2. **scCITEseq_Doublet_Finder** - This function will remove the doublets from the object.
 
@@ -36,7 +39,9 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
 
    This will filter out doublets from both the RNA and ADT
    
-3. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2 and samples integreated using CCA.
+   ![Screenshot 2024-04-01 at 5 23 52 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/597e8948-3f76-43f5-8912-57bf256b8907)
+
+4. **scCITESeq_sctransform_V2** - The object is normalized using scTransform V2 and samples integreated using CCA.
 
    #### To Run the Code
           source("./pipeline_functions/scCITESeq_sctransform_V2.R")
@@ -54,7 +59,7 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                                      sample_tree=NULL,
                                      k_weight=100)
 
-4. **scCITESeq_RNA_intergation** - The RNA / ADT object integration function.
+5. **scCITESeq_RNA_intergation** - The RNA / ADT object integration function.
 
    ##### To Run the Code
          source("pipeline_functions/scCITESeq_RNA_intergation.R")
@@ -69,7 +74,7 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                          ncol=2,
                          ndims = 50)
    
-5. **scCITESeq_ADT_merging** - Performing the ADT (protein) Sample Integration using CCA.
+6. **scCITESeq_ADT_merging** - Performing the ADT (protein) Sample Integration using CCA.
    #### To Run the Code
              source("pipeline_functions/scCITESeq_ADT_merging.R")
    
@@ -84,8 +89,10 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                          reference=NULL,
                          sample_tree = NULL,
                          k_weight=100)
-   
-6. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
+
+   ![Screenshot 2024-04-01 at 5 25 28 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/3a2ad526-fd3d-400e-b7a1-caba184ac866)
+
+7. **cluster_UMAP_QC** - Performing clustering and checking the quality for each cluster.
    #### To Run the Code
           source("pipeline_functions/cluster_UMAP_QC.R")
 
@@ -99,8 +106,9 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                               process = "UMAP_QC",
                               col_sel = c("Age","Run","orig.ident","gender"))
     
-    
-7. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
+    ![Screenshot 2024-04-01 at 5 26 28 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/5daba60c-9168-4165-bc80-027b0bfe8436)
+
+8. **scCITEseq_modality_integration** -  Modality RNA and ADT integration.
    #### To Run the Code
               source("pipeline_functions/scCITEseq_modality_integration.R")
 
@@ -114,6 +122,8 @@ The functions can be used to perform the downstream analysis of the scCITESeq da
                                    objname= "BB22003")
 
 These 7 step will perform the batch as well as modality (RNA and protein) integration for the scCITESeq experiment
+
+![Screenshot 2024-04-01 at 5 27 05 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/f9437690-1c86-4ce4-becd-150db6005f77)
 
 
 ### Downstream Analysis
@@ -150,6 +160,7 @@ These 7 step will perform the batch as well as modality (RNA and protein) integr
                                               savedir = savedir2,
                                               logfc = 0.5,
                                               p_value_adj = 0.05)
+![Screenshot 2024-04-01 at 5 28 24 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/63d31ae7-606f-421a-b8b9-dda2a7c8a7fc)
 
                                                                
 
