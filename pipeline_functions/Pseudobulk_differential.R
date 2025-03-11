@@ -23,6 +23,7 @@ LimmaEdgeR_differential <- function(dds, design0, cm, savedir, logfc=1.5,p_value
   desl <- as.DGEList(dds)
   message("Normalizaling Data")
   desl <- calcNormFactors(desl) # This add the effective normalization library size for each sample does not perform normalization
+  # This step uses TMM (Trimmed Mean of M-values) normalization, which adjusts for compositional biases and differences in sequencing depth across samples.
   desl <- estimateGLMCommonDisp(desl, design = design0)
   
   # https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4053721/
@@ -55,6 +56,15 @@ LimmaEdgeR_differential <- function(dds, design0, cm, savedir, logfc=1.5,p_value
                           method = 'robust',
                           maxit = 10000)
   desl_Wnorm_fit_2 <- contrasts.fit(desl_Wnorm_fit, cm)
+# Explanation of proportion = 1/10:
+# When you set proportion = 1/10, it means that the function will apply moderation to 10% of the total variance. This means the function will shrink the gene-specific variances to the 
+# global (or pooled) variance estimate, but only a small portion (10%) of the variance will be shrunk towards the global estimate, while the remaining 90% of the variance will be retained 
+# as-is for each gene.
+# A lower proportion value (e.g., proportion = 1/10) results in less shrinkage. This is useful when you want to preserve the variability for genes that have more reliable measurements, 
+# especially when you have a large sample size and want to minimize the moderation effect.
+# On the other hand, setting a higher proportion (e.g., proportion = 1/2 or proportion = 1) would result in more shrinkage. This is useful when you have smaller sample sizes or want to 
+# apply stronger moderation to reduce the impact of noisy, lowly expressed genes.
+  
   desl_Wnorm_fit_2 <- eBayes(desl_Wnorm_fit_2,  proportion = 1/10)
   pdf(paste(savedir,"mean_variance_trend.pdf",sep = ""))
   print(plotSA(desl_Wnorm_fit_2, main="Final model: Mean-variance trend"))
