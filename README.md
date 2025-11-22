@@ -166,6 +166,13 @@ These 7 step will perform the batch as well as modality (RNA and protein) integr
 ![Screenshot 2024-04-01 at 5 32 06 PM](https://github.com/Ajaingithub/scCITESeq_pipeline/assets/37553954/220691b9-d267-4b84-be68-10bcd8a69cdb)
 
                                                                
+### Interesting this pipeline has been used for multiple project and published or currently in the revision. Might be helpful for you project. 
+Data for both the papers is publicly available. 
+
+If you use the code, or the resource, please cite:
+
+https://www.nature.com/articles/s41467-025-61627-y 
+https://www.biorxiv.org/content/10.1101/2025.06.05.658069v1 
 
 
 
